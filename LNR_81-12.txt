@@ -1,5 +1,6 @@
+LoadPackage("localnr");
 
-%%(1)
+#####(1)
 G:=SmallGroup(81,12);
 gen:=MinimalGeneratingSet(G);
 List(gen,Order);
@@ -31,9 +32,9 @@ n := ExplicitMultiplicationNearRingNC( G, mulGR );
 M:=MultiplicationTable(n);;
 mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
 n := ExplicitMultiplicationNearRing( G, mu_NR );
+IsLocalNearRing(n);
 
-
-%%(2)
+#####(2)
 G:=SmallGroup(81,12);
 gen:=MinimalGeneratingSet(G);
 List(gen,Order);
@@ -65,10 +66,10 @@ n := ExplicitMultiplicationNearRingNC( G, mulGR );
 M:=MultiplicationTable(n);;
 mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
 n := ExplicitMultiplicationNearRing( G, mu_NR );
+IsLocalNearRing(n);
 
 
-
-%%(3)
+#####(3)
 G:=SmallGroup(81,12);
 gen:=MinimalGeneratingSet(G);
 List(gen,Order);
@@ -100,3 +101,4 @@ n := ExplicitMultiplicationNearRingNC( G, mulGR );
 M:=MultiplicationTable(n);;
 mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
 n := ExplicitMultiplicationNearRing( G, mu_NR );
+IsLocalNearRing(n);
