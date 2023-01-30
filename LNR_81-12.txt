@@ -1,0 +1,102 @@
+
+%%(1)
+G:=SmallGroup(81,12);
+gen:=MinimalGeneratingSet(G);
+List(gen,Order);
+a:=gen[1];
+b:=gen[2];
+d:=gen[3];
+c:=a^-1*b^-1*a*b;
+
+psi:=function(x)
+return x;end;
+
+beta:=function(x)
+return x;end;
+
+mulGR:=function(x,y)
+local x1, x2, x3,x4,y1,y2,y3,y4;
+for x1 in [0..2] do
+for x2 in [0..2] do
+for x3 in [0..2] do
+for x4 in [0..2] do
+for y1 in [0..2] do
+for y2 in [0..2] do
+for y3 in [0..2] do
+for y4 in [0..2] do
+if x=a^x1*b^x2*c^x3*d^x4 and y=a^y1*b^y2*c^y3*d^y4 then return 
+a^(x1*y1)*b^(x2*y1+beta(x1)*y2)*c^(-x1*x2*Binomial(y1,2)+x3*y1+x1*beta(x1)*y3)*d^(x4*y1+psi(x1)*y4);fi;
+od;od;od;od;od;od;od;od;end;
+n := ExplicitMultiplicationNearRingNC( G, mulGR );
+M:=MultiplicationTable(n);;
+mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
+n := ExplicitMultiplicationNearRing( G, mu_NR );
+
+
+%%(2)
+G:=SmallGroup(81,12);
+gen:=MinimalGeneratingSet(G);
+List(gen,Order);
+a:=gen[1];
+b:=gen[2];
+d:=gen[3];
+c:=a^-1*b^-1*a*b;
+
+psi:=function(x)
+return x^2;end;
+
+beta:=function(x)
+return x^2;end;
+
+mulGR:=function(x,y)
+local x1, x2, x3,x4,y1,y2,y3,y4;
+for x1 in [0..2] do
+for x2 in [0..2] do
+for x3 in [0..2] do
+for x4 in [0..2] do
+for y1 in [0..2] do
+for y2 in [0..2] do
+for y3 in [0..2] do
+for y4 in [0..2] do
+if x=a^x1*b^x2*c^x3*d^x4 and y=a^y1*b^y2*c^y3*d^y4 then return 
+a^(x1*y1)*b^(x2*y1+beta(x1)*y2)*c^(-x1*x2*Binomial(y1,2)+x3*y1+x1*beta(x1)*y3)*d^(x4*y1+psi(x1)*y4);fi;
+od;od;od;od;od;od;od;od;end;
+n := ExplicitMultiplicationNearRingNC( G, mulGR );
+M:=MultiplicationTable(n);;
+mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
+n := ExplicitMultiplicationNearRing( G, mu_NR );
+
+
+
+%%(3)
+G:=SmallGroup(81,12);
+gen:=MinimalGeneratingSet(G);
+List(gen,Order);
+a:=gen[1];
+b:=gen[2];
+d:=gen[3];
+c:=a^-1*b^-1*a*b;
+
+psi:=function(x)
+return 1;end;
+
+beta:=function(x)
+return 1;end;
+
+mulGR:=function(x,y)
+local x1, x2, x3,x4,y1,y2,y3,y4;
+for x1 in [0..2] do
+for x2 in [0..2] do
+for x3 in [0..2] do
+for x4 in [0..2] do
+for y1 in [0..2] do
+for y2 in [0..2] do
+for y3 in [0..2] do
+for y4 in [0..2] do
+if x=a^x1*b^x2*c^x3*d^x4 and y=a^y1*b^y2*c^y3*d^y4 then return 
+a^(x1*y1)*b^(x2*y1+beta(x1)*y2)*c^(-x1*x2*Binomial(y1,2)+x3*y1+x1*beta(x1)*y3)*d^(x4*y1+psi(x1)*y4);fi;
+od;od;od;od;od;od;od;od;end;
+n := ExplicitMultiplicationNearRingNC( G, mulGR );
+M:=MultiplicationTable(n);;
+mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
+n := ExplicitMultiplicationNearRing( G, mu_NR );
