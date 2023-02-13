@@ -1,0 +1,51 @@
+LoadPackage("localnr");
+
+#####(1)
+G:=SmallGroup(81,3);
+gen:=MinimalGeneratingSet(G);
+List(gen,Order);
+a:=gen[1];
+b:=gen[2];
+c:=a^-1*b^-1*a*b;
+
+mulGR:=function(x,y)
+local x1,x2,x3,y1,y2,y3;
+for x1 in [0..8] do
+for x2 in [0..2] do
+for x3 in [0..2] do
+for y1 in [0..8] do
+for y2 in [0..2] do
+for y3 in [0..2] do
+if x=a^x1*b^x2*c^x3 and y=a^y1*b^y2*c^y3 then return 
+a^(x1*y1+3*x2*y2)*b^(x2*y1+x1*y2)*c^(-x1*x2*Binomial(y1,2)+x3*y1+x1^2*y3);fi;
+od;od;od;od;od;od;end;
+n := ExplicitMultiplicationNearRingNC( G, mulGR );
+M:=MultiplicationTable(n);;
+mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
+n := ExplicitMultiplicationNearRing( G, mu_NR );
+IsLocalNearRing(n);
+
+#####(2)
+G:=SmallGroup(81,3);
+gen:=MinimalGeneratingSet(G);
+List(gen,Order);
+a:=gen[1];
+b:=gen[2];
+c:=a^-1*b^-1*a*b;
+
+mulGR:=function(x,y)
+local x1,x2,x3,y1,y2,y3;
+for x1 in [0..8] do
+for x2 in [0..2] do
+for x3 in [0..2] do
+for y1 in [0..8] do
+for y2 in [0..2] do
+for y3 in [0..2] do
+if x=a^x1*b^x2*c^x3 and y=a^y1*b^y2*c^y3 then return 
+a^(x1*y1+9*x2*y2)*b^(x2*y1+x1*y2)*c^(-x1*x2*Binomial(y1,2)+x3*y1+x1^2*y3);fi;
+od;od;od;od;od;od;end;
+n := ExplicitMultiplicationNearRingNC( G, mulGR );
+M:=MultiplicationTable(n);;
+mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
+n := ExplicitMultiplicationNearRing( G, mu_NR );
+IsLocalNearRing(n);

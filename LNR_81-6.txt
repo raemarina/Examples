@@ -1,0 +1,26 @@
+LoadPackage("localnr");
+
+G:=SmallGroup(81,6);
+gen:=MinimalGeneratingSet(G);
+List(gen,Order);
+a:=gen[1];
+b:=gen[2];
+
+beta:=function(x)
+if x mod 3 <> 0 then return 1;
+else return 0;fi;end;
+
+mulGR:=function(x,y)
+local x1,x2,y1,y2;
+for x1 in [0..26] do
+for x2 in [0..2] do
+for y1 in [0..26] do
+for y2 in [0..2] do
+if x=a^x1*b^x2 and y=a^y1*b^y2 then return 
+a^(x1*y1+9*x1*x2*Binomial(y1,2))*b^(x2*y1+beta(x1)*y2);fi;
+od;od;od;od;end;
+n := ExplicitMultiplicationNearRingNC( G, mulGR );
+M:=MultiplicationTable(n);;
+mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
+n := ExplicitMultiplicationNearRing( G, mu_NR );
+IsLocalNearRing(n);
