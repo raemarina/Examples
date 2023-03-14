@@ -42,7 +42,7 @@ for y1 in [0..8] do
 for y2 in [0..2] do
 for y3 in [0..2] do
 if x=a^x1*b^x2*c^x3 and y=a^y1*b^y2*c^y3 then return 
-a^(x1*y1+9*x2*y2)*b^(x2*y1+x1*y2)*c^(-x1*x2*Binomial(y1,2)+x3*y1+x1^2*y3);fi;
+a^(x1*y1)*b^(x2*y1+x1*y2)*c^(-x1*x2*Binomial(y1,2)+x3*y1+x1^2*y3);fi;
 od;od;od;od;od;od;end;
 n := ExplicitMultiplicationNearRingNC( G, mulGR );
 M:=MultiplicationTable(n);;
