@@ -32,8 +32,3 @@ M:=MultiplicationTable(n);;
 mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
 n := ExplicitMultiplicationNearRing( G, mu_NR );
 IsLocalNearRing(n);
-DD:=UnitsOfNearRing(n);;
-AR:=AutomorphismsAssociatedWithNearRingUnits(n,DD);;
-AS:=AsGroup(AR);
-IdGroup(AS);
-StructureDescription(AS);
