@@ -1,0 +1,39 @@
+LoadPackage("LocalNR");
+G:=SmallGroup(625,7);
+gen:=MinimalGeneratingSet(G);
+List(gen,Order);
+a:=gen[1];
+b:=gen[2];
+c:=a^-1*b^-1*a*b;
+d:=a^-1*c^-1*a*c;
+
+beta:=function(x)
+return x^2 mod 5;end;
+
+phi:=function(x,y)
+if x=0 mod 5 then return y^2 mod 5;
+else return 0;fi;end;
+
+mulGR:=function(x,y)
+local x1,x2,x3,x4,y1,y2,y3,y4;
+for x1 in [0..4] do
+for x2 in [0..4] do
+for x3 in [0..4] do
+for x4 in [0..4] do
+for y1 in [0..4] do
+for y2 in [0..4] do
+for y3 in [0..4] do
+for y4 in [0..4] do
+if x=a^x1*b^x2*c^x3*d^x4 and y=a^y1*b^y2*c^y3*d^y4 
+then return a^(x1*y1)*b^(x2*y1+beta(x1)*y2)*c^(x3*y1-x1*x2*Binomial(y1,2)+x1*beta(x1)*y3)*d^(x4*y1-x1*x3*Binomial(y1,2)+x2*Binomial(y1,2)*Binomial(x1,2)+x1^2*x2*(Binomial(y1,y1-3) mod 5)+phi(x1,x2)*y2-beta(x1)*Binomial(x1,2)*y3+x1^2*beta(x1)*y4); fi;
+od;od;od;od;od;od;od;od;end;
+n := ExplicitMultiplicationNearRingNC( G, mulGR );
+M:=MultiplicationTable(n);;
+mu_NR:=NearRingMultiplicationByOperationTable(G,M,AsSortedList(G));
+n := ExplicitMultiplicationNearRing( G, mu_NR );
+IsLocalNearRing(n);
+DD:=UnitsOfNearRing(n);;
+AR:=AutomorphismsAssociatedWithNearRingUnits(n,DD);;
+AS:=AsGroup(AR);
+IdGroup(AS);
+StructureDescription(AS);
